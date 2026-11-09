@@ -1,0 +1,29 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class FreezeDemo {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("EDT Demo BAD Practice");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(400, 200);
+            frame.setLocationRelativeTo(null);
+            frame.setLayout(new FlowLayout());
+
+            JLabel status = new JLabel("Ready");
+            JButton button = new JButton("Freeze the UI");
+
+            button.addActionListener(e -> {
+                status.setText("Working...");
+                try {
+                    Thread.sleep(5000); // Blocks the EDT!
+                } catch (InterruptedException ex) {}
+                status.setText("Done!");
+            });
+
+            frame.add(button);
+            frame.add(status);
+            frame.setVisible(true);
+        });
+    }
+}
