@@ -1,0 +1,3 @@
+# Activity 2: Event Loop & Queue Simulation Reflection
+
+The Event Queue acts as a FIFO (First-In, First-Out) buffer that holds incoming events (such as user keypresses, mouse clicks, or system timers) until the application can process them. The Event Loop continuously checks this queue, dequeuing events one by one and invoking their associated callback handlers. If an event handler executes a long-running operation directly on the Event Dispatch Thread (EDT), the Event Loop becomes blocked and cannot process remaining events. In a real-world desktop application, a blocked event loop causes the interface to freeze, rendering it unresponsive to user inputs, window resizes, or repaint requests.
