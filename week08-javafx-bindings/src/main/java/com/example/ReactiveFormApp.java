@@ -46,7 +46,7 @@ public class ReactiveFormApp extends Application {
         submitBtn.disableProperty().bind(
                 nameField.textProperty().isEmpty()
                         .or(emailField.textProperty().isEmpty())
-                        .or(emailField.textProperty().contains("@").not())
+                        .or(Bindings.createBooleanBinding(() -> !emailField.getText().contains("@"), emailField.textProperty()))
                         .or(bioField.textProperty().length().greaterThan(150))
         );
 

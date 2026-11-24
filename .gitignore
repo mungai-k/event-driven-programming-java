@@ -1,7 +1,6 @@
 *.class
-# Maven output
-week06-javafx/target/
-# IDE settings
+**/target/
+target/
 .vscode/
 .idea/
 *.iml
